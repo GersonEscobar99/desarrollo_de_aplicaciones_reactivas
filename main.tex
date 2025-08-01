@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{letterpaper, margin=1in}
+\setstretch{2}
+\addbibresource{referencias.bib}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\title{\textbf{Buenas Prácticas para el Desarrollo de Aplicaciones Reactivas}}
+\author{Gerson Escobar}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Resumen}
+El desarrollo de aplicaciones reactivas ha ganado popularidad en los últimos años debido a su capacidad para manejar flujos de datos asincrónicos, mejorar la experiencia del usuario y optimizar el uso de recursos del sistema. Este documento presenta una recopilación de buenas prácticas clave para su implementación eficaz.
+
+\section{Introducción}
+Las aplicaciones reactivas se basan en los principios de la programación reactiva, que enfatizan la asincronía, el flujo de datos y la resiliencia (Jonas, 2017). Frameworks como Spring WebFlux y bibliotecas como RxJava o Project Reactor permiten implementar sistemas más responsivos y eficientes.
+
+\section{Buenas Prácticas}
+
+\subsection{1. Comprender el modelo de programación reactivo}
+No basta con usar un framework reactivo; es necesario entender el paradigma. Esto incluye conocer los conceptos de flujo de datos, observables, backpressure y suscripción.
+
+\subsection{2. Utilizar operadores correctamente}
+RxJava, Reactor y otros proporcionan operadores como `map`, `flatMap`, `filter`, `buffer`, entre otros. Su uso correcto evita problemas de rendimiento y facilita el mantenimiento del código.
+
+\subsection{3. Manejo adecuado de errores}
+Implementar estrategias como `onErrorResume`, `retry`, `timeout` y `fallback` ayuda a construir sistemas resilientes que se recuperan ante fallas.
+
+\subsection{4. Evitar bloqueos}
+No se deben usar llamadas bloqueantes (`Thread.sleep()`, `blocking I/O`) dentro de flujos reactivos. Utiliza conectores reactivos como R2DBC o WebClient para mantener la no bloqueabilidad.
+
+\subsection{5. Usar backpressure}
+La presión inversa (backpressure) permite evitar la sobrecarga del sistema al controlar la velocidad de emisión y consumo de eventos.
+
+\subsection{6. Monitoreo y trazabilidad}
+Las aplicaciones reactivas son más difíciles de depurar. Por ello, se recomienda implementar logs estructurados, herramientas de trazabilidad como Zipkin o Sleuth, y métricas con Micrometer.
+
+\subsection{7. Testeo de flujos}
+Se deben usar bibliotecas como `StepVerifier` (Project Reactor) o `TestObserver` (RxJava) para probar el comportamiento de los flujos de manera controlada y reproducible.
+
+\section{Conclusión}
+El desarrollo reactivo ofrece grandes beneficios, pero su correcta implementación requiere un cambio de paradigma y disciplina en el uso de herramientas. Aplicar estas buenas prácticas contribuye a lograr sistemas robustos, escalables y eficientes.
+
+\printbibliography
+
+\end{document}
